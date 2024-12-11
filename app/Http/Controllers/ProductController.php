@@ -132,6 +132,11 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
+        if (!$product) {
+            $request->session()->flash('error', 'Product not found');
+            return Redirect::route(route: 'products.index');
+        }
+
         $product->name = $request->name;
         $product->price = $request->price;
         $product->price_currency = $request->price_currency;
