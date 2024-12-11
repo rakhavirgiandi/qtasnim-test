@@ -74,7 +74,7 @@ const Table = (props) => {
       <>
         <DataTable data={data} meta={meta} columns={columns} pagination={true} expanded={true} table={{getSubRows: row => row.products, enableSubRowSelection: false}} additionalComponentTopRight={<>
           <Button asChild variant="outline" size="sm">
-            <Link href={route('products.index')}><CirclePlus /> Add</Link>
+            <Link href={route('products.create')}><CirclePlus /> Add</Link>
           </Button>
         </>} />
       </>
