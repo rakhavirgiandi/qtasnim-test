@@ -42,8 +42,6 @@ export default function Index({ data, products }) {
                             variant = 'success';
                         }
 
-                        console.log(val);
-
                         if (flash[val]) {
                             return (
                                 <Alert variant={variant} className="mb-3">
