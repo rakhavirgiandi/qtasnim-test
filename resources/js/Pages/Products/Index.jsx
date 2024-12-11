@@ -2,8 +2,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { Card, CardContent } from '@/Components/ui/card';
 import Table from './partials/Table';
+import { Alert, AlertDescription, AlertTitle } from '@/Components/ui/alert';
+import { usePage } from '@inertiajs/react'
 
-export default function Index({ data,products }) {
+export default function Index({ data, products }) {
+
+    const { flash, alerts } = usePage().props
 
     const meta = {
         path: products?.meta.path,
@@ -16,10 +20,8 @@ export default function Index({ data,products }) {
         total: products.meta.total,
         pageQuery: "page",
     };
-
-    console.log(products.meta);
     
-
+    
     return (
         <AuthenticatedLayout
             header={
@@ -30,6 +32,30 @@ export default function Index({ data,products }) {
         >
             <Head title="Dashboard" />
                 <div className="container px-6 mx-auto">
+                {
+                    alerts.map((val, i) => {
+                        let variant = 'default';
+                        
+                        if (val === 'error') {
+                            variant = 'destructive';
+                        } else if (val === 'success') {
+                            variant = 'success';
+                        }
+
+                        console.log(val);
+
+                        if (flash[val]) {
+                            return (
+                                <Alert variant={variant} className="mb-3">
+                                <AlertTitle>{val}</AlertTitle>
+                                <AlertDescription>
+                                {flash[val]}
+                                </AlertDescription>
+                            </Alert>
+                            );
+                        }
+                    })
+                }
                     <Table data={products.data} meta={meta} />
                 </div>
         </AuthenticatedLayout>

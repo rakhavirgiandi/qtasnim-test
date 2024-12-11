@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -41,6 +43,9 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $categories = Category::orderByDesc('id')->get();
+
+        return Inertia::render('Products/Create', ['categories' => $categories]);
     }
 
     /**
@@ -49,6 +54,34 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|max_digits:10',
+            'price_currency' => 'required|in:idr',
+            'stock' => 'required|numeric|max_digits:10',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'nullable|string|max:1000'
+        ]);
+
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->price_currency = $request->price_currency;
+        $product->stock = $request->stock;
+        $product->description = $request->description;
+
+        $category = Category::find($request->category_id);
+
+        if ($category) {
+            $product->category()->associate($category);
+            $product->save();
+
+            $request->session()->flash('success', 'Create Product was successful!');
+        } else {
+            $request->session()->flash('error', 'Category not found');
+        }
+
+        return Redirect::route('products.index');
     }
 
     /**
