@@ -27,7 +27,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
+    --gutter-y: 1rem;
+    --gutter-x: 1rem;
   }
   .dark {
     --background: 222.2 84% 4.9%;
@@ -62,5 +64,20 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--gutter-y));
+    margin-right: calc(-.5* calc(var(--gutter-x)));
+    margin-left: calc(-.5* var(--gutter-x));
+  }
+  
+  .col {
+    flex: 0 0 auto;
+    padding-right: calc(var(--gutter-x)* .5);
+    padding-left: calc(var(--gutter-x)* .5);
+    margin-top: var(--gutter-y);
   }
 }
