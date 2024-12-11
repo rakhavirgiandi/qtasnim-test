@@ -51,7 +51,7 @@ const CreateProductForm = ({ className = "", categories = [] }) => {
               <div className="mb-3 row">
                   <div className="col w-1/3 xl:w-1/5 lg:w-1/3 md:w-1/2 sm:w-1/2">
                     <Label htmlFor="currency">Currency</Label>
-                    <Select value={data.priceCurrency}>
+                    <Select value={data.price_currency}>
                       <SelectTrigger className="w-full mt-2">
                         <SelectValue placeholder="Select Currency"/>
                       </SelectTrigger>
