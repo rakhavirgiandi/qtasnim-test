@@ -10,11 +10,18 @@ import {
   DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import DataTable from '@/Components/data-table/DataTable';
-import { Link } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 
 const Table = (props) => {
 
   const { data, meta } = props;
+
+  const { delete: destroy, errors, processing, recentlySuccessful } = useForm();
+
+  const deleteHandle = (productID) => {
+    // console.log(productID);
+    destroy(route('products.destroy', { id: productID }));
+  }
 
   const columns = [
       {
@@ -59,8 +66,9 @@ const Table = (props) => {
                     Edit
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>View customer</DropdownMenuItem>
-                <DropdownMenuItem>View payment details</DropdownMenuItem>
+                <DropdownMenuItem className="hover:cursor-pointer" onClick={() => { deleteHandle(row.original.id) }} disabled={processing}>
+                    Delete
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
               )
