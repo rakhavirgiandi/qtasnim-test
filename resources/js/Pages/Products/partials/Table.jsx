@@ -54,13 +54,11 @@ const Table = (props) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem
-                  onClick={() => console.log('clicked!')}
-                >
-                  Copy payment ID
+                <DropdownMenuItem asChild className="hover:cursor-pointer">
+                  <Link href={route('products.edit', {id: row.original.id})}>
+                    Edit
+                  </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem>View customer</DropdownMenuItem>
                 <DropdownMenuItem>View payment details</DropdownMenuItem>
               </DropdownMenuContent>
