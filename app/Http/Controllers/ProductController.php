@@ -13,9 +13,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $limit_of_row = $request->query('limit') ? $request->query('limit') : "";
+
         $products = Product::select(
             'products.id as id',
             'products.name',
@@ -24,7 +26,7 @@ class ProductController extends Controller
             'categories.key as category_key',
             'categories.title as category_title',
 
-        )->leftJoin('categories', 'products.category_id', '=', 'categories.id')->paginate(10);
+        )->leftJoin('categories', 'products.category_id', '=', 'categories.id')->paginate($limit_of_row);
         $data =  new ProductCollection($products);
         // return response()->json($data);
 
