@@ -1,17 +1,38 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link } from '@inertiajs/react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/Components/ui/card"
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+  } from "@/Components/ui/alert"
+export default function GuestLayout(props) {
+    
+    const currentRoute = route().current();
 
-export default function GuestLayout({ children }) {
     return (
-        <div className="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
-            <div>
-                <Link href="/">
-                    <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
-                </Link>
-            </div>
-
-            <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
-                {children}
+        <div className="flex min-h-screen flex-col items-center bg-white pt-6 sm:justify-center sm:pt-0 px-5 md:px-0 dark:bg-gray-900 ">
+            <div className="w-full overflow-hidden sm:max-w-md">
+                {props?.credentialError ? 
+                    <Alert variant="destructive" className="mb-3">
+                        {/* <ExclamationTriangleIcon className="h-4 w-4" /> */}
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>
+                            {props?.credentialError}
+                        </AlertDescription>
+                    </Alert>
+                : ""}
+                <Card>
+                    {currentRoute === 'login' ? 
+                <CardHeader className="space-y-1">
+                    <CardTitle className="text-2xl font-bold">Login</CardTitle>
+                    <CardDescription>Enter your email and password to login to your account</CardDescription>
+                </CardHeader>
+                    : ''}
+                <CardContent>
+                    {props.children}
+                </CardContent>
+                </Card>
             </div>
         </div>
     );

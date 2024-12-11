@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { Card, CardContent } from '@/Components/ui/card';
 
-export default function Dashboard() {
+export default function Index() {
     return (
         <AuthenticatedLayout
             header={
@@ -15,7 +15,7 @@ export default function Dashboard() {
                 <div className="container px-6 mx-auto">
                     <Card>
                         <CardContent >
-                    You're logged in!
+                            This is Product page
                         </CardContent>
                     </Card>
                 </div>
