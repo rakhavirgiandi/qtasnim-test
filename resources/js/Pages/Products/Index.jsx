@@ -44,7 +44,7 @@ export default function Index({ data, products }) {
 
                         if (flash[val]) {
                             return (
-                                <Alert variant={variant} className="mb-3">
+                                <Alert variant={variant} className="mb-3" key={i}>
                                 <AlertTitle>{val}</AlertTitle>
                                 <AlertDescription>
                                 {flash[val]}
