@@ -71,6 +71,6 @@ Your application should now be accessible at `http://localhost:8000`.
 
 - Ensure that your `.env` file is properly configured before running migrations or seeders.
 - If you encounter issues, check the Laravel and Inertia documentation for troubleshooting guidance.
-- You can find the credentials in `database/seeders/DataSeeder.php`.
+- You can find the credentials in `database/seeders/UserSeeder.php`.
 
 Feel free to open issues or submit pull requests for improvements!
