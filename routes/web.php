@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -41,6 +42,15 @@ Route::middleware('auth')->prefix('orders')->name('orders.')->group(function () 
     Route::get('/create', [OrderController::class, 'create'])->name('create');
     Route::post('/store', [OrderController::class, 'store'])->name('store');
     Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware('auth')->prefix('categories')->name('categories.')->group(function () {
+    Route::get('/', [CategoryController::class, 'index'])->name('index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('create');
+    Route::post('/store', [CategoryController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('edit');
+    Route::patch('/update/{id}', [CategoryController::class, 'update'])->name('update');
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';
