@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //
-        $limit_of_row = $request->query('limit') ? $request->query('limit') : "";
+        $limit_of_row = $request->query('limit') ? $request->query('limit') : 10;
 
         $products = Product::select(
             'products.id as id',
@@ -27,7 +27,6 @@ class ProductController extends Controller
             'categories.id as category_id',
             'categories.key as category_key',
             'categories.title as category_title',
-
         )->leftJoin('categories', 'products.category_id', '=', 'categories.id')->paginate($limit_of_row);
         $data =  new ProductCollection($products);
         // return response()->json($data);
