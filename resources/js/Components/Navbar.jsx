@@ -35,6 +35,11 @@ const Navbar = () => {
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild className="hover:cursor-pointer">
+                  <Link href={route('categories.index')}>
+                    Category
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="hover:cursor-pointer">
                   <Link href={route('orders.index')}>
                     Order
                   </Link>
