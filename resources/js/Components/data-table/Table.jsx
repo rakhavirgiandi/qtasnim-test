@@ -181,19 +181,19 @@ export function Table(props) {
           className="h-8 py-0 px-3 focus:ring-0 -ml-3 transition-colors focus:ring-offset-0"
           onClick={() => {
             if (params['sort-type'] === 'desc') {
-              const _query = { ...params, sort: key, 'sort-type': 'asc' };
+              const _query = { ...params, 'sort-column': key, 'sort-type': 'asc' };
               const url = route(route().current());
               router.get(url, _query, {replace: true, preserveState: true});
             } else {
-              const _query = { ...params, sort: key, 'sort-type': 'desc' };
+              const _query = { ...params, 'sort-column': key, 'sort-type': 'desc' };
               const url = route(route().current());
               router.get(url, _query, {replace: true, preserveState: true});
             } 
           }}>
             {headerText}
-            {params.sort === key && params['sort-type'] === 'asc' ?
+            {params['sort-column'] === key && params['sort-type'] === 'asc' ?
               <ChevronUp className=" h-4 w-4" />
-            : params.sort === key && params['sort-type'] === 'desc' ?
+            : params['sort-column'] === key && params['sort-type'] === 'desc' ?
               <ChevronDown className=" h-4 w-4" /> 
             : <ChevronsUpDown className=" h-4 w-4" />}
           </Button>

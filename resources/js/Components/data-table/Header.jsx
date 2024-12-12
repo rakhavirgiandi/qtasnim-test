@@ -59,7 +59,7 @@ const Header = ({searchable, searchQueryParam, rowSelection, dialogFilterOnOpen,
               {
                 searchable ? 
                 <>
-              <Input type="text" id="search" ref={searchRef} name="search" placeholder="Search names..." value={searchQuery} className="h-8 max-md:w-full py-1 px-3 ring-0 focus:ring-0 focus:ring-offset-0 focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
+              <Input type="text" id="search" ref={searchRef} name="search" placeholder="search..." value={searchQuery} className="h-8 max-md:w-full py-1 px-3 ring-0 focus:ring-0 focus:ring-offset-0 focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
               onChange={searchAction} autoComplete="off" />
               {searchQuery ? 
                 <Button type="button" variant="ghost" onClick={clearSearchQuery} className="h-8 w-8 focus:ring-0 transition-colors focus:ring-offset-0"><X size={32} strokeWidth={3} /></Button>

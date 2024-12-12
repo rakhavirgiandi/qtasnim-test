@@ -24,7 +24,7 @@ class Order extends Model
         $order_amount = (int) $this->order_amount;
 
         return Attribute::make(
-            get: function (string $value) use ($previous_stock, $order_amount) {
+            get: function () use ($previous_stock, $order_amount) {
                 if ($previous_stock && $order_amount) {
                     return $previous_stock - $order_amount; 
                 }
