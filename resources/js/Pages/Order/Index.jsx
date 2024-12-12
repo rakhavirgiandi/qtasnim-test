@@ -28,9 +28,6 @@ export default function Index({ orders, min_and_max_order_by_category:minAndMaxO
         pageQuery: "page",
     };
 
-    console.log(minAndMaxOrderByCategory);
-    
-
     const onDateRangeChangeHandle = (value) => {
         setDate(value);
         if (value.from && value.to) {
@@ -74,7 +71,7 @@ export default function Index({ orders, min_and_max_order_by_category:minAndMaxO
                         }
                     })
                 }
-                <DatePickerWithRange className="mb-3" onValueChange={onDateRangeChangeHandle} />
+                <DatePickerWithRange className="w-full mb-3" onValueChange={onDateRangeChangeHandle} />
                 <div className="row mb-3">
                     <div className="col w-full md:w-1/2">
                         <Card className="w-full">

@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\OrderCollection;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -98,6 +100,8 @@ class OrderController extends Controller
     public function create()
     {
         //
+        $products = Product::where('stock', '>', 0)->get();
+        return Inertia::render('Order/Create', ['products' => $products]);
     }
 
     /**
@@ -106,6 +110,38 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'product_id' => 'required|exists:categories,id',
+            'order_date' => 'required|date',
+            'order_amount' => 'required|numeric|max_digits:10',
+        ]);
+
+        $product = Product::find($request->product_id);
+
+        if (!$product) {
+            return Redirect::route('orders.create')->withErrors(["product_id" => "The selected product does not exist."]);
+        }
+        
+        if ($product->stock <= 0) {
+            return Redirect::route('orders.create')->withErrors(["product_id" => "Product out of stock"]);
+        }
+
+        $order = new Order;
+        $order->order_date = $request->order_date;
+        $order->order_amount = $request->order_amount;
+        $order->previous_stock = $product->stock;
+
+        $remaining_stock = $product->stock - $request->order_amount;
+        $product->stock = $remaining_stock;
+
+        $order->product()->associate($product);
+
+        $product->save();
+        $order->save();
+
+        $request->session()->flash('success', 'Create order was successful!');
+
+        return Redirect::route('orders.index');
     }
 
     /**

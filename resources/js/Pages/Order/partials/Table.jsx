@@ -79,7 +79,7 @@ const Table = (props) => {
       <>
         <DataTable searchable={true} data={data} meta={meta} columns={columns} pagination={true} additionalComponentTopRight={<>
           <Button asChild variant="outline" size="sm">
-            <Link href={route('products.create')}><CirclePlus /> Add</Link>
+            <Link href={route('orders.create')}><CirclePlus /> Add</Link>
           </Button>
         </>} />
       </>
