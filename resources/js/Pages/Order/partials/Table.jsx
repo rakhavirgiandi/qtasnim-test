@@ -24,6 +24,16 @@ const Table = (props) => {
 
   const columns = [
       {
+          accessorKey: "no",
+          header: "No",
+          cell: ({ row, cell }) => {
+            const currentPage = meta?.currentPage ? meta.currentPage : 0;
+            const numberOfRow = currentPage * (row.index + 1);
+            
+            return numberOfRow;
+          },
+      },
+      {
           accessorKey: "name",
           isServerSideSorting: true,
           headerText: "Name",
