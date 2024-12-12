@@ -32,7 +32,7 @@ class ProductController extends Controller
         // return response()->json($data);
 
         return Inertia::render('Products/Index', [
-            'products' => json_decode(json_encode($data), true)
+            'products' => $data
         ]);
     }
 

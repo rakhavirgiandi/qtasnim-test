@@ -14,25 +14,15 @@ class ProductCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
-        return [
-            'data' => $this->collection,
-            'meta' => [
-                'current_page' => $this->resource->currentPage(),
-                'from' => $this->resource->firstItem(),
-                'last_page' => $this->resource->lastPage(),
-                'per_page' => $this->resource->perPage(),
-                'to' => $this->resource->lastItem(),
-                'total' => $this->resource->total(),
-                'path' => $this->resource->path(),
-            ],
-        ];
+        return parent::toArray($request);
     }
 
-    // public function paginationInformation($request, $paginated, $default)
-    // {
-    //     unset($default['meta']['links']);
+    public function paginationInformation($request, $paginated, $default)
+    {
+        unset($default['meta']['links']);
+        $default['meta']['links'] = $default['links'];
+        unset($default['links']);
  
-    //     return $default;
-    // }
+        return $default;
+    }
 }
