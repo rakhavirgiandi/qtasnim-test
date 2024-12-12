@@ -26,11 +26,11 @@ const Table = (props) => {
   const columns = [
       {
           accessorKey: "name",
-          headerText: "Name",
+          header: "Name",
       },
       {
           accessorKey: "category",
-          headerText: "Category",
+          header: "Category",
           cell: ({row}) => {
             return row.original.category?.title;
             
@@ -38,7 +38,7 @@ const Table = (props) => {
       },
       {
           accessorKey: "price",
-          headerText: "Price",
+          header: "Price",
           cell: ({row}) => {
             if (row.original) {
               return row.original.full_price;
@@ -47,7 +47,7 @@ const Table = (props) => {
       },
       {
           accessorKey: "stock",
-          headerText: "Stock",
+          header: "Stock",
       },
       {
           id: "actions",
