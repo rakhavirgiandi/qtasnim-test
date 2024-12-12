@@ -49,6 +49,13 @@ const Table = (props) => {
           }
       },
       {
+          accessorKey: "order_amount",
+          header: "Order Amount",
+          cell: ({row}) => {
+            return row.original.order_amount         
+          }
+      },
+      {
           accessorKey: "order_date",
           isServerSideSorting: true,
           headerText: "Order Date",
