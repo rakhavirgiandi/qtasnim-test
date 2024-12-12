@@ -17,7 +17,7 @@ export default function Edit({product, categories}) {
                     </Button>
                     <h2 className="text-lg font-medium text-gray-900">Edit Product</h2>
                 </div>
-                <UpdateProductForm className="mt-3" product={product} categories={categories} />
+                <UpdateProductForm className="mt-3" product={product.data} categories={categories} />
             </div>
         </AuthenticatedLayout>
     );

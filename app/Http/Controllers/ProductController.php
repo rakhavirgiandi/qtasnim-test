@@ -111,7 +111,7 @@ class ProductController extends Controller
         $data = new ProductResource($product);
 
         // return response()->json($data);
-        return Inertia::render('Products/Edit', ['product' => json_decode(json_encode($data), true), 'categories' => $categories]);
+        return Inertia::render('Products/Edit', ['product' => $data, 'categories' => $categories]);
     }
 
     /**
