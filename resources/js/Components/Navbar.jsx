@@ -60,19 +60,11 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56" sideOffset={15} align="end">
                 <DropdownMenuGroup>
-                    <Link href={route('profile.edit')}>
-                      <DropdownMenuItem className="hover:cursor-pointer">
-                          Profile
-                      </DropdownMenuItem>
-                    </Link>
-                  <DropdownMenuItem>
-                    Settings
-                  </DropdownMenuItem>
-                  <Link href={route('logout')} method='post' as='button' className='w-full'>
-                    <DropdownMenuItem className="hover:cursor-pointer">
+                    <DropdownMenuItem className="hover:cursor-pointer" asChild>
+                      <Link href={route('logout')} method='post' as='button' className='w-full'>
                         Log out
+                       </Link>
                     </DropdownMenuItem>
-                   </Link>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
