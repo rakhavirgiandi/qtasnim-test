@@ -78,7 +78,7 @@ class OrderController extends Controller
             }
         }
 
-        $get_orders = $orders->paginate();
+        $get_orders = $orders->paginate($limit_of_row);
         $data = new OrderCollection($get_orders);
         $min = $order_group_by_category->clone()->orderBy('total_orders', 'asc')->first();
         $max = $order_group_by_category->clone()->orderBy('total_orders', 'desc')->first();
