@@ -9,40 +9,40 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
   } from "@/Components/ui/dropdown-menu";
+import { Menu } from 'lucide-react';
 
 const Navbar = () => {
 
-    // const {
-    //     state,
-    //     open,
-    //     setOpen,
-    //     openMobile,
-    //     setOpenMobile,
-    //     isMobile,
-    //     toggleSidebar,
-    //     SIDEBAR_WIDTH
-    //   } = useSidebar();
-
-    // const [sidebarWidth, setSidebarWidth] = useState(isMobile ? '0px' : SIDEBAR_WIDTH);
-
-    // useEffect(() => {
-    //     if (isMobile == false) {   
-    //       if (open === false) {
-    //           setSidebarWidth('0px');
-    //       } else {
-    //           setSidebarWidth(SIDEBAR_WIDTH);
-    //       }
-    //     } else {
-    //       setSidebarWidth('0px')
-    //     }
-
-    // }, [open, isMobile]);
-
     return (
         <>
-        {/* <div className="transition-all fixed top-0 right-0 bg-background border-b h-12 z-50" style={{'--sidebar-width': sidebarWidth,width: 'calc(100% - var(--sidebar-width))'}}> */}
          <div className="transition-width duration-200 fixed top-0 right-0 bg-background border-b h-12 z-50 navbar-container w-full">
-          <div className="flex flex-wrap w-full h-full items-center px-4 justify-end">
+          <div className="flex flex-wrap w-full h-full items-center px-4 justify-between">
+            <div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-7 w-7 [&_svg]:size-5" size="icon" ><Menu strokeWidth={2.5} /></Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" sideOffset={15}>
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild className="hover:cursor-pointer">
+                  <Link href={route('dashboard')}>
+                    Home
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="hover:cursor-pointer">
+                  <Link href={route('products.index')}>
+                    Product
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="hover:cursor-pointer">
+                  <Link href={route('orders.index')}>
+                    Order
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            </div>
             <div className="flex items-center">
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
