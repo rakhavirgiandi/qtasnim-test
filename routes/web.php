@@ -40,9 +40,7 @@ Route::middleware('auth')->prefix('orders')->name('orders.')->group(function () 
     Route::get('/', [OrderController::class, 'index'])->name('index');
     Route::get('/create', [OrderController::class, 'create'])->name('create');
     Route::post('/store', [OrderController::class, 'store'])->name('store');
-    // Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit');
-    // Route::patch('/update/{id}', [ProductController::class, 'update'])->name('update');
-    // Route::delete('/destroy/{id}', [ProductController::class, 'destroy'])->name('destroy');
+    Route::delete('/destroy/{id}', [OrderController::class, 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';
