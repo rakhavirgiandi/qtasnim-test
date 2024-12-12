@@ -76,6 +76,8 @@ class OrderController extends Controller
             if ($sort_column === 'order_date') {
                 $orders->orderBy('order_date', $sort_type);
             }
+        } else {
+            $orders->orderBy('id', 'asc');
         }
 
         $get_orders = $orders->paginate($limit_of_row);
