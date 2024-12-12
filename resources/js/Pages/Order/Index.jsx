@@ -21,7 +21,7 @@ export default function Index({ orders, min_and_max_order_by_category:minAndMaxO
         currentPage: orders?.meta.current_page,
         firstPage: 1,
         lastPage: orders?.meta.last_page,
-        limit: params.limit ? params.limit : 10,
+        limit: params.limit ? parseInt(params.limit) : 10,
         from: orders.meta.from,
         to: orders.meta.to,
         total: orders.meta.total,
