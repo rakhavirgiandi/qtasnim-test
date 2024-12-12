@@ -5,9 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import UpdateProductForm from './partials/UpdateProductForm';
 
-export default function Create({product, categories}) {
-    console.log(product);
-    
+export default function Edit({product, categories}) {
     return (
         <AuthenticatedLayout>
             <div className="container mx-auto max-md:px-3">
