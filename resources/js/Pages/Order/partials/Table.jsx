@@ -48,7 +48,7 @@ const Table = (props) => {
       },
       {
         accessorKey: "category",
-        headerText: "Category",
+        header: "Category",
         cell: ({row}) => {
           return row.original.product?.category?.title            
         }
