@@ -5,8 +5,6 @@ import { Link } from '@inertiajs/react';
 import UpdateCategoryForm from './partials/UpdateCategoryForm';
 
 export default function Edit({category}) {
-    console.log(category);
-    
     return (
         <AuthenticatedLayout>
             <div className="container mx-auto max-md:px-3">

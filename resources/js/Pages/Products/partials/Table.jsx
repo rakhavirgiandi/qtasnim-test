@@ -19,7 +19,6 @@ const Table = (props) => {
   const { delete: destroy, errors, processing, recentlySuccessful } = useForm();
 
   const deleteHandle = (productID) => {
-    // console.log(productID);
     destroy(route('products.destroy', { id: productID }));
   }
 

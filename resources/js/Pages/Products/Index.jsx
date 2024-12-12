@@ -22,9 +22,6 @@ export default function Index({ data, products }) {
         pageQuery: "page",
     };
     
-    console.log(products);
-    
-    
     return (
         <AuthenticatedLayout
             header={
