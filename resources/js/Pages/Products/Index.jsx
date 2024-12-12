@@ -8,18 +8,21 @@ import { usePage } from '@inertiajs/react'
 export default function Index({ data, products }) {
 
     const { flash, alerts } = usePage().props
+    const params = route().params;
 
     const meta = {
         path: products?.meta.path,
         currentPage: products?.meta.current_page,
         firstPage: 1,
         lastPage: products?.meta.last_page,
-        limit: products?.meta.per_page,
+        limit: params.limit ? parseInt(params.limit) : 10,
         from: products.meta.from,
         to: products.meta.to,
         total: products.meta.total,
         pageQuery: "page",
     };
+    
+    console.log(products);
     
     
     return (
