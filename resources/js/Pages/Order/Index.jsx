@@ -84,7 +84,7 @@ export default function Index({ orders, min_and_max_order_by_category:minAndMaxO
                                     {minAndMaxOrderByCategory.min?.total_orders ?
                                         `is the least sold category ${ date?.from && date?.to ? "from "+moment(date.from).format('DD/MM/YYYY') +" to "+moment(date.to).format('DD/MM/YYYY') : " of all time"} - ${minAndMaxOrderByCategory.min?.total_orders} item sold out`
                                     : 
-                                        `is the least sold category${minAndMaxOrderByCategory.min?.total_orders ? " - "+minAndMaxOrderByCategory.min?.total_orders+" item sold out" : ""}`
+                                    "No items sold out of any category"
                                     }
                                 </p>
                             </CardContent>
@@ -96,9 +96,9 @@ export default function Index({ orders, min_and_max_order_by_category:minAndMaxO
                                 <h2 className="font-bold">{minAndMaxOrderByCategory.max?.category_title ? minAndMaxOrderByCategory.max?.category_title : "No Category" }</h2>
                                 <p className="text-border text-slate-500 text-sm">
                                 {minAndMaxOrderByCategory.max?.total_orders ?
-                                        `is the least sold category ${ date?.from && date?.to ? "from "+moment(date.from).format('DD/MM/YYYY') +" to "+moment(date.to).format('DD/MM/YYYY') : " of all time"} - ${minAndMaxOrderByCategory.max?.total_orders} item sold out`
+                                        `is the most sold category ${ date?.from && date?.to ? "from "+moment(date.from).format('DD/MM/YYYY') +" to "+moment(date.to).format('DD/MM/YYYY') : " of all time"} - ${minAndMaxOrderByCategory.max?.total_orders} item sold out`
                                     : 
-                                    `is the least sold category${minAndMaxOrderByCategory.max?.total_orders ? " - "+minAndMaxOrderByCategory.max?.total_orders+" item sold out" : ""}`
+                                    "No items sold out of any category"
                                 }
                                 </p>
                             </CardContent>
